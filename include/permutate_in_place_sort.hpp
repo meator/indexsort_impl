@@ -1,22 +1,27 @@
 #ifndef PERMUTATE_IN_PLACE_SORT_
 #define PERMUTATE_IN_PLACE_SORT_
 
-#include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <vector>
 
 #include "base.hpp"
 
 namespace indexsort
 {
 /**
- * `std::sort` index with custom comparator that uses values contents instead of index contents. Then apply the permutation
- * index in place to values.
+ * `std::sort` index with custom comparator that uses values contents instead of
+ * index contents. Then apply the permutation index in place to values.
  *
- * This algorithm is taken from https://medium.com/@kevingxyz/permutation-in-place-8528581a5553
+ * This algorithm is taken from
+ * https://medium.com/@kevingxyz/permutation-in-place-8528581a5553
  */
 template <typename RandomIt1, typename RandomIt2, typename Compare>
-void permutate_in_place_sort(RandomIt1 value_begin, RandomIt1 value_end, RandomIt2 index_begin, RandomIt2 index_end, Compare cmp)
+void permutate_in_place_sort(RandomIt1 value_begin,
+                             RandomIt1 value_end,
+                             RandomIt2 index_begin,
+                             RandomIt2 index_end,
+                             Compare cmp)
 {
     auto length = std::distance(value_begin, value_end);
 
@@ -25,12 +30,13 @@ void permutate_in_place_sort(RandomIt1 value_begin, RandomIt1 value_end, RandomI
 
     using index_val_type = typename std::iterator_traits<RandomIt2>::value_type;
 
-    std::sort(index_begin, index_end, [&value_begin, &cmp](const index_val_type & a, const index_val_type & b)
-    {
-        return cmp(value_begin[a], value_begin[b]);
-    });
+    std::sort(
+      index_begin, index_end,
+      [&value_begin, &cmp](const index_val_type & a, const index_val_type & b)
+      { return cmp(value_begin[a], value_begin[b]); });
 
-    // We'll be using these two as if they were arrays. Rename them for convenience.
+    // We'll be using these two as if they were arrays. Rename them for
+    // convenience.
     auto & index = index_begin;
     auto & values = value_begin;
 
@@ -44,6 +50,6 @@ void permutate_in_place_sort(RandomIt1 value_begin, RandomIt1 value_end, RandomI
         swap(values[i], values[index_to_swap]);
     }
 }
-};
+};  // namespace indexsort
 
 #endif

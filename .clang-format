@@ -1,0 +1,10 @@
+﻿---
+BasedOnStyle: Chromium
+BreakBeforeBraces: Allman
+ColumnLimit: '80'
+IndentWidth: '4'
+ContinuationIndentWidth: '2'
+PointerAlignment: Middle
+UseTab: Never
+
+...
