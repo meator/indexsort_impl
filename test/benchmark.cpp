@@ -49,6 +49,9 @@ TEST_CASE("Benchmark sorting integers of all algorithms", "[!benchmark]")
 
     auto cmp = std::less<int>();
 
+    REQUIRE(values_orig.size() == length_of_values);
+    REQUIRE(index_orig.size() == length_of_values);
+
     BENCHMARK_ADVANCED(
       "sort values (this isn't index sort but it's put here for comparison)")
     (Catch::Benchmark::Chronometer meter)
@@ -175,6 +178,9 @@ TEST_CASE("Benchmark sorting doubles of all algorithms", "[!benchmark]")
     std::iota(index_orig.begin(), index_orig.end(), 0);
 
     auto cmp = std::less<double>();
+
+    REQUIRE(values_orig.size() == length_of_values);
+    REQUIRE(index_orig.size() == length_of_values);
 
     BENCHMARK_ADVANCED(
       "sort values (this isn't index sort but it's put here for comparison)")
