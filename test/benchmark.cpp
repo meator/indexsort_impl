@@ -169,7 +169,7 @@ TEST_CASE("Benchmark sorting doubles of all algorithms", "[!benchmark]")
     // Initialize values with random numbers.
     std::vector<double> values_orig(length_of_values);
 
-    std::uniform_int_distribution<> distrib(0, 1);
+    std::uniform_real_distribution<> distrib(0.0, 1.0);
 
     std::generate(values_orig.begin(), values_orig.end(),
                   [&gen, &distrib]() { return distrib(gen); });
